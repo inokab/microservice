@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Address;
+use App\Models\Order;
+use App\Models\Product;
+use Database\Factories\ProductFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $products = Product::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Order::factory(2)
+            ->create()
+            ->each(function (Order $order) use ($products) {
+                $order->products()->attach($products->random(2), ['quantity' => 1]);
+                $billingAddress = Address::factory()->create(['type' => Address::TYPE_BILLING_ADDRESS]);
+                $shippingAddress = Address::factory()->create(['type' => Address::TYPE_SHIPPING_ADDRESS]);
+                $order->billing_address_id = $billingAddress->id;
+                $order->shipping_address_id = $shippingAddress->id;
+                $order->save();
+            });
     }
 }
