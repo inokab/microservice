@@ -42,6 +42,16 @@ class Order extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
+    }
+
+    public function getTotalPriceAttribute(): float|int
+    {
+        $totalPrice = 0;
+        foreach ($this->products as $product) {
+            $totalPrice+= $product->price * $product->pivot->quantity;
+        }
+
+        return $totalPrice;
     }
 }

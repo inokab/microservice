@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\CreateOrderController;
+use App\Http\Controllers\Api\ListOrderController;
+use App\Http\Controllers\Api\UpdateOrderStatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('/orders')->group(function () {
+    Route::post('/create', CreateOrderController::class);
+    Route::post('/list', ListOrderController::class);
+    Route::post('/update', UpdateOrderStatusController::class);
 });
+
