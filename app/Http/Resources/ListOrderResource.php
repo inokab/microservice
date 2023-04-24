@@ -19,7 +19,7 @@ class ListOrderResource extends JsonResource
             'status' => $this->status,
             'name' => $this->name,
             'created_at' => $this->created_at,
-            'totalPrice' => $this->total_price,
+            'total_price' => $this->total_price,
         ];
     }
 }

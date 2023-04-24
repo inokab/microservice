@@ -1,0 +1,144 @@
+openapi: 3.0.3
+info:
+  title: Order Microservice API Specification
+  version: 1.0.0
+tags:
+  - name: orders
+paths:
+  /orders/create:
+    post:
+      tags:
+        - orders
+      summary: Create a new order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - shipping_method
+                - billing_address_id
+                - shipping_address_id
+                - products
+              properties:
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: johndoe@example.com
+                shipping_method:
+                  type: integer
+                  example: 1
+                billing_address_id:
+                  type: integer
+                  example: 1
+                shipping_address_id:
+                  type: integer
+                  example: 2
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      quantity:
+                        type: integer
+                        example: 2
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+        422:
+          description: Unprocessable Content
+  /orders/list:
+    post:
+      tags:
+        - orders
+      summary: List orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                status:
+                  type: integer
+                  example: 1
+                start_date:
+                  type: string
+                  example: 2023-04-24 10:00:00
+                end_date:
+                  type: string
+                  example: 2023-04-24 11:00:00
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      status:
+                        type: integer
+                        example: 2
+                      name:
+                        type: string
+                        example: John Doe
+                      created_at:
+                        type: string
+                        example: 2023-04-24 10:00:00
+                      total_price:
+                        type: number
+                        format: float
+                        example: 100
+        422:
+          description: Unprocessable Content
+  /orders/update:
+    post:
+      tags:
+        - orders
+      summary: Update order status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - status
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                status:
+                  type: integer
+                  example: 1
+      responses:
+        204:
+          description: No Content
+        422:
+          description: Unprocessable Content
