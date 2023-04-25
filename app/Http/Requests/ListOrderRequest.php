@@ -25,17 +25,17 @@ class ListOrderRequest extends FormRequest
     {
         return [
             'id' => [
-                'nullable',
+                'sometimes',
                 'integer',
                 Rule::exists(Order::class, 'id')
             ],
             'status' => [
-                'nullable',
+                'sometimes',
                 'integer',
                 Rule::in([Order::STATUS_NEW, Order::STATUS_COMPLETED])
             ],
-            'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date',
+            'start_date' => 'sometimes|date',
+            'end_date' => 'sometimes|date',
         ];
     }
 }
