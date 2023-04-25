@@ -26,7 +26,7 @@ Install the project dependencies using Composer
 ```bash
 composer install
 ```
-Copy the example environment file and update it with your database and other settings
+Copy the example environment file and update it with your database and other settings. If you are using Docker set the `DB_HOST` to `mysql`
 
 ```bash
 cp .env.example .env
@@ -70,11 +70,13 @@ Stop the containers
 docker-compose down
 ```
 
-## Technical Notes
+## How To Use
 
-
+After the installation steps import the collection `(Microservice.postman_collection.json)` to Postman or use cURL from CLI. You will find requests for each route.
 
 ## cURL Requests
+
+Here you can find the cURL request that you can test. I exported them from Postman and also attached the collection `(Microservice.postman_collection.json)` 
 
 ```bash
 curl --location 'http://127.0.0.1:8000/api/orders/create' \
@@ -128,3 +130,24 @@ curl --location 'http://127.0.0.1:8000/api/orders/update' \
    "status": 2
 }'
 ```
+
+## Technical Notes
+
+I wanted to aim for simplicity in the implementation. These are the following steps were taken:
+
+### Database Schema
+
+The database schema was created first, along with the models and the corresponding migration files. Relationships were 
+added to the models, and for some columns, such as status, delivery mode, and address types, enums were used instead of 
+dedicated tables for simplicity.
+
+### Model Factories
+
+The model factories were used for creating dummy data for each model.
+
+### Controllers
+
+Each endpoint was assigned its own controller and data validation was done in form request classes. In the incoming 
+data at the order creation, the assumption was that the addresses were already saved, so the ids were used instead of 
+the full address model. The given functions return a JsonResource, or where there is no return value, a response with 
+HTTP code 204.
