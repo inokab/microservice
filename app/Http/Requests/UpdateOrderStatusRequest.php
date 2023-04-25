@@ -30,7 +30,7 @@ class UpdateOrderStatusRequest extends FormRequest
                 Rule::exists(Order::class, 'id'),
             ],
             'status' => [
-                'nullable',
+                'required',
                 'integer',
                 Rule::in([Order::STATUS_NEW, Order::STATUS_COMPLETED])
             ],
