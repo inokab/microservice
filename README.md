@@ -133,7 +133,7 @@ curl --location 'http://127.0.0.1:8000/api/orders/update' \
 
 ## Technical Notes
 
-I wanted to aim for simplicity in the implementation. These are the following steps were taken:
+My goal was to achieve simplicity in the implementation process. The following steps were taken:
 
 ### Database Schema
 
