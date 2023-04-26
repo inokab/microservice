@@ -30,6 +30,7 @@ class CreateOrderRequest extends FormRequest
             'email' => 'required|email|max:255',
             'shipping_method' => [
                 'required',
+                'string',
                 Rule::in([Order::SHIPPING_METHOD_PICKUP, Order::SHIPPING_METHOD_HOME_DELIVERY]),
             ],
             'billing_address_id' => [

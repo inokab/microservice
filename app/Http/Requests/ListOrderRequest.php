@@ -31,7 +31,7 @@ class ListOrderRequest extends FormRequest
             ],
             'status' => [
                 'sometimes',
-                'integer',
+                'string',
                 Rule::in([Order::STATUS_NEW, Order::STATUS_COMPLETED])
             ],
             'start_date' => 'sometimes|date',

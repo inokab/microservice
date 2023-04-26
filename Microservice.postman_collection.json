@@ -25,7 +25,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"shipping_method\": 1,\r\n    \"billing_address_id\": 1,\r\n    \"shipping_address_id\": 1,\r\n    \"products\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}"
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"shipping_method\": \"pickup\",\r\n    \"billing_address_id\": 1,\r\n    \"shipping_address_id\": 2,\r\n    \"products\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/orders/create",
@@ -72,7 +72,7 @@
 						},
 						{
 							"key": "status",
-							"value": "2",
+							"value": "completed",
 							"type": "text"
 						},
 						{
@@ -125,7 +125,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"id\": 1,\r\n   \"status\": 2\r\n}"
+					"raw": "{\r\n   \"id\": 1,\r\n   \"status\": \"completed\"\r\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/orders/update",

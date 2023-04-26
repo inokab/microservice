@@ -9,9 +9,9 @@ class Address extends Model
 {
     use HasFactory;
 
-    const TYPE_BILLING_ADDRESS = 1;
+    const TYPE_BILLING_ADDRESS = 'billing';
 
-    const TYPE_SHIPPING_ADDRESS = 2;
+    const TYPE_SHIPPING_ADDRESS = 'shipping';
 
     protected $fillable = [
         'name',

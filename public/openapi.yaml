@@ -30,8 +30,11 @@ paths:
                   type: string
                   example: johndoe@example.com
                 shipping_method:
-                  type: integer
-                  example: 1
+                  type: string
+                  enum:
+                    - new
+                    - completed
+                  example: new
                 billing_address_id:
                   type: integer
                   example: 1
@@ -80,8 +83,11 @@ paths:
                   type: integer
                   example: 1
                 status:
-                  type: integer
-                  example: 1
+                  type: string
+                  enum:
+                    - new
+                    - completed
+                  example: new
                 start_date:
                   type: string
                   example: 2023-04-24 10:00:00
@@ -135,8 +141,11 @@ paths:
                   type: integer
                   example: 1
                 status:
-                  type: integer
-                  example: 1
+                  type: string
+                  enum:
+                    - new
+                    - completed
+                  example: completed
       responses:
         204:
           description: No Content

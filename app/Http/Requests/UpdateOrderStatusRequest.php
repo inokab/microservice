@@ -31,7 +31,7 @@ class UpdateOrderStatusRequest extends FormRequest
             ],
             'status' => [
                 'required',
-                'integer',
+                'string',
                 Rule::in([Order::STATUS_NEW, Order::STATUS_COMPLETED])
             ],
         ];

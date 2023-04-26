@@ -85,9 +85,9 @@ curl --location 'http://127.0.0.1:8000/api/orders/create' \
 --data-raw '{
     "name": "John Doe",
     "email": "johndoe@example.com",
-    "shipping_method": 1,
+    "shipping_method": "pickup",
     "billing_address_id": 1,
-    "shipping_address_id": 1,
+    "shipping_address_id": 2,
     "products": [
         {
             "id": 1,
@@ -107,7 +107,7 @@ curl --location 'http://127.0.0.1:8000/api/orders/list' \
 --header 'Content-Type: application/json' \
 --data-raw '{
    "id": 1,
-   "status": 2,
+   "status": "new",
    "start_date": "2023-04-24 19:00:00",
    "end_date": "2023-04-24 18:54:00"
 }'
@@ -116,7 +116,7 @@ curl --location 'http://127.0.0.1:8000/api/orders/list' \
 --header 'Accept: application/json' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'id=1' \
---data-urlencode 'status=2' \
+--data-urlencode 'status=new' \
 --data-urlencode 'start_date=2023-04-24 18:00:00' \
 --data-urlencode 'end_date=2023-04-24 19:00:00'
 ```
@@ -127,7 +127,7 @@ curl --location 'http://127.0.0.1:8000/api/orders/update' \
 --header 'Content-Type: application/json' \
 --data-raw '{
    "id": 1,
-   "status": 2
+   "status": "new"
 }'
 ```
 

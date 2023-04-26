@@ -11,13 +11,13 @@ class Order extends Model
 {
     use HasFactory;
 
-    const SHIPPING_METHOD_PICKUP = 1;
+    const SHIPPING_METHOD_PICKUP = 'pickup';
 
-    const SHIPPING_METHOD_HOME_DELIVERY = 2;
+    const SHIPPING_METHOD_HOME_DELIVERY = 'home_delivery';
 
-    const STATUS_NEW = 1;
+    const STATUS_NEW = 'new';
 
-    const STATUS_COMPLETED = 2;
+    const STATUS_COMPLETED = 'completed';
 
     protected $fillable = [
         'name',
