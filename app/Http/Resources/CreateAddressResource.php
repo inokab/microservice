@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,5 +18,10 @@ class CreateAddressResource extends JsonResource
         return [
             'id' => $this->id,
         ];
+    }
+
+    public function toResponse($request): JsonResponse
+    {
+        return parent::toResponse($request)->setStatusCode(201);
     }
 }
