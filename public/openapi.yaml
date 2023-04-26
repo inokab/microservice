@@ -151,3 +151,54 @@ paths:
           description: No Content
         422:
           description: Unprocessable Content
+  /addresses/create:
+    post:
+      tags:
+        - addresses
+      summary: Create an address
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - zip_code
+                - city
+                - street
+                - type
+              properties:
+                name:
+                  type: string
+                  example: home
+                zip_code:
+                  type: string
+                  example: 1234
+                city:
+                  type: string
+                  example: Budapest
+                street:
+                  type: string
+                  example: Example street 1
+                type:
+                  type: string
+                  enum:
+                    - billing
+                    - shipping
+                  example: shipping
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+        422:
+          description: Unprocessable Content

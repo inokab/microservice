@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CreateAddressController;
 use App\Http\Controllers\Api\CreateOrderController;
 use App\Http\Controllers\Api\ListOrderController;
 use App\Http\Controllers\Api\UpdateOrderStatusController;
@@ -22,4 +23,6 @@ Route::prefix('/orders')->group(function () {
     Route::post('/list', ListOrderController::class);
     Route::post('/update', UpdateOrderStatusController::class);
 });
+
+Route::post('/addresses/create', CreateAddressController::class);
 

@@ -131,6 +131,19 @@ curl --location 'http://127.0.0.1:8000/api/orders/update' \
 }'
 ```
 
+```bash
+curl --location 'http://127.0.0.1:8000/api/addresses/create' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "home",
+    "zip_code": "1234",
+    "city": "Budapest",
+    "street": "Example street 1",
+    "type": "shipping"
+}'
+```
+
 ## Technical Notes
 
 My goal was to achieve simplicity in the implementation process. The following steps were taken:
